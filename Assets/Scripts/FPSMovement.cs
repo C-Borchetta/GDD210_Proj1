@@ -13,7 +13,7 @@ public class FPSMovement : MonoBehaviour
 
 	public float verticalSpeed;
 
-	public Light light;
+	public new Light light;
 	public float flickerdelay;
 	public Vector2 intensityRange;
 	public Vector2 delayRange;
