@@ -39,6 +39,7 @@ public class FPSMovement : MonoBehaviour
 
 		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
 
+		//Jump
 		if (CC.isGrounded)
 		{
 			verticalSpeed = 0f;

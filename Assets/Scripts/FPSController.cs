@@ -16,6 +16,7 @@ public class FPSController : MonoBehaviour
 
 	private void Update()
 	{
+		//Camera rotation
 		float mouseInputY = Input.GetAxis("Mouse Y") * MouseSensitivity;
 		camRotation -= mouseInputY;
 		camRotation = Mathf.Clamp(camRotation, -90f, 90f);
@@ -24,6 +25,7 @@ public class FPSController : MonoBehaviour
 		float mouseInputX = Input.GetAxis("Mouse X") * MouseSensitivity;
 		transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseInputX, 0f));
 
+		//Raycasting
 		if(Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
