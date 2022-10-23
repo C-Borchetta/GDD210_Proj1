@@ -45,7 +45,7 @@ public class FPSMovement : MonoBehaviour
 
         //Sprinting
         if (Input.GetKey(KeyCode.LeftShift)){
-			sprint = 4f;
+			sprint = 3f;
 			Stamina.fillAmount -= Time.deltaTime * 0.4f;
         }
         else
