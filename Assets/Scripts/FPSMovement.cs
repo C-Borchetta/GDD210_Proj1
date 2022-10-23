@@ -8,6 +8,7 @@ public class FPSMovement : MonoBehaviour
 {
 	public CharacterController CC;
 	public float MoveSpeed;
+	private float sprint = 0f;
 	public float Gravity = -9.8f;
 	public float JumpSpeed;
 
@@ -19,7 +20,10 @@ public class FPSMovement : MonoBehaviour
 	public Vector2 delayRange;
 	public float targetIntens;
 
-	private void Update()
+	//UI
+	public Image Stamina;
+
+    private void Update()
 	{
 		flickerdelay -= Time.deltaTime;
 		if(flickerdelay <= 0)
@@ -34,10 +38,27 @@ public class FPSMovement : MonoBehaviour
 		Vector3 movement = Vector3.zero;
 
 		// X/Z movement
-		float forwardMovement = Input.GetAxis("Vertical") * MoveSpeed * Time.deltaTime;
-		float sideMovement = Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime;
+		float forwardMovement = Input.GetAxis("Vertical") * (MoveSpeed + sprint) * Time.deltaTime;
+		float sideMovement = Input.GetAxis("Horizontal") * (MoveSpeed + sprint) * Time.deltaTime;
 
 		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
+
+        //Sprinting
+        if (Input.GetKey(KeyCode.LeftShift)){
+			sprint = 4f;
+			Stamina.fillAmount -= Time.deltaTime * 0.4f;
+        }
+        else
+        {
+			sprint = 0f;
+			Stamina.fillAmount += Time.deltaTime * 0.06f;
+        }
+
+		if (Stamina.fillAmount == 0f)
+        {
+			sprint = 0f;
+        }
+        
 
 		//Jump
 		if (CC.isGrounded)
