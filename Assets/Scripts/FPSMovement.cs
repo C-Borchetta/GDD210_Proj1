@@ -11,6 +11,7 @@ public class FPSMovement : MonoBehaviour
 	private float sprint = 0f;
 	public float Gravity = -9.8f;
 	public float JumpSpeed;
+	public bool sprinting;
 
 	public float verticalSpeed;
 
@@ -24,7 +25,7 @@ public class FPSMovement : MonoBehaviour
 	//UI
 	public Image Stamina;
 
-    private void Update()
+	private void Update()
 	{
 		//Flashlight flickering
 		flickerdelay -= Time.deltaTime;
@@ -36,7 +37,7 @@ public class FPSMovement : MonoBehaviour
 		light.intensity = Mathf.Lerp(light.intensity, targetIntens, Time.deltaTime * 6);
 
 		if (canMove == true)
-        {
+		{
 			Vector3 movement = Vector3.zero;
 
 			// X/Z movement
@@ -46,11 +47,21 @@ public class FPSMovement : MonoBehaviour
 			movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
 
 			//Sprinting
-			if (Input.GetKey(KeyCode.LeftShift))
-			{
+			if (Input.GetKey(KeyCode.LeftShift)) // are your sprinting?
+            {
+				sprinting = true;
+            }
+			else
+            {
+				sprinting = false;
+            }
+
+			if (sprinting && (forwardMovement > 0 || sideMovement > 0))
+            {
 				sprint = 3f;
 				Stamina.fillAmount -= Time.deltaTime * 0.4f;
 			}
+
 			else
 			{
 				sprint = 0f;
@@ -78,7 +89,7 @@ public class FPSMovement : MonoBehaviour
 
 			CC.Move(movement);
 		}
-		
+	
 	}
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
