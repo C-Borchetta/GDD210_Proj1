@@ -75,4 +75,15 @@ public class FPSMovement : MonoBehaviour
 
 		CC.Move(movement);
 	}
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+		//Stop movement after winning
+		outside ot = hit.collider.GetComponent<outside>();
+
+		if (ot)
+		{
+			
+		}
+	}
 }
