@@ -56,7 +56,7 @@ public class FPSMovement : MonoBehaviour
 				sprinting = false;
             }
 
-			if (sprinting && (forwardMovement > 0 || sideMovement > 0))
+			if (sprinting && (forwardMovement != 0 || sideMovement != 0 ))
             {
 				sprint = 3f;
 				Stamina.fillAmount -= Time.deltaTime * 0.4f;
