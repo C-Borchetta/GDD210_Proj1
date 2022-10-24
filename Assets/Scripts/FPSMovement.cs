@@ -19,71 +19,75 @@ public class FPSMovement : MonoBehaviour
 	public Vector2 intensityRange;
 	public Vector2 delayRange;
 	public float targetIntens;
+	private bool canMove = true;
 
 	//UI
 	public Image Stamina;
 
     private void Update()
 	{
+		//Flashlight flickering
 		flickerdelay -= Time.deltaTime;
-		if(flickerdelay <= 0)
-        {
+		if (flickerdelay <= 0)
+		{
 			light.intensity = Random.Range(intensityRange.x, intensityRange.y);
 			flickerdelay = Random.Range(delayRange.x, delayRange.y);
-        }
-
+		}
 		light.intensity = Mathf.Lerp(light.intensity, targetIntens, Time.deltaTime * 6);
-		
 
-		Vector3 movement = Vector3.zero;
-
-		// X/Z movement
-		float forwardMovement = Input.GetAxis("Vertical") * (MoveSpeed + sprint) * Time.deltaTime;
-		float sideMovement = Input.GetAxis("Horizontal") * (MoveSpeed + sprint) * Time.deltaTime;
-
-		movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
-
-        //Sprinting
-        if (Input.GetKey(KeyCode.LeftShift)){
-			sprint = 3f;
-			Stamina.fillAmount -= Time.deltaTime * 0.4f;
-        }
-        else
+		if (canMove == true)
         {
-			sprint = 0f;
-			Stamina.fillAmount += Time.deltaTime * 0.06f;
-        }
+			Vector3 movement = Vector3.zero;
 
-		if (Stamina.fillAmount == 0f)
-        {
-			sprint = 0f;
-        }
-        
+			// X/Z movement
+			float forwardMovement = Input.GetAxis("Vertical") * (MoveSpeed + sprint) * Time.deltaTime;
+			float sideMovement = Input.GetAxis("Horizontal") * (MoveSpeed + sprint) * Time.deltaTime;
 
-		//Jump
-		if (CC.isGrounded)
-		{
-			verticalSpeed = 0f;
-			if(Input.GetKeyDown(KeyCode.Space))
+			movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
+
+			//Sprinting
+			if (Input.GetKey(KeyCode.LeftShift))
 			{
-				verticalSpeed = JumpSpeed;
+				sprint = 3f;
+				Stamina.fillAmount -= Time.deltaTime * 0.4f;
 			}
+			else
+			{
+				sprint = 0f;
+				Stamina.fillAmount += Time.deltaTime * 0.06f;
+			}
+
+			if (Stamina.fillAmount == 0f)
+			{
+				sprint = 0f;
+			}
+
+
+			//Jump
+			if (CC.isGrounded)
+			{
+				verticalSpeed = 0f;
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					verticalSpeed = JumpSpeed;
+				}
+			}
+
+			verticalSpeed += (Gravity * Time.deltaTime);
+			movement += (transform.up * verticalSpeed * Time.deltaTime);
+
+			CC.Move(movement);
 		}
 		
-		verticalSpeed += (Gravity * Time.deltaTime);
-		movement += (transform.up * verticalSpeed * Time.deltaTime);
-
-		CC.Move(movement);
 	}
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
 		//Stop movement after winning
 		outside ot = hit.collider.GetComponent<outside>();
-
 		if (ot)
 		{
-			
+			canMove = false;
 		}
 	}
 }
