@@ -1483,6 +1483,7 @@ MonoBehaviour:
   MoveSpeed: 4
   Gravity: -9.8
   JumpSpeed: 6
+  sprinting: 0
   verticalSpeed: 0
   light: {fileID: 1633032671}
   flickerdelay: 1
