@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 654952805}
-  MoveSpeed: 4
+  MoveSpeed: 3
 --- !u!1 &388539609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
