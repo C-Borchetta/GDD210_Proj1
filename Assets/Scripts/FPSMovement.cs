@@ -25,7 +25,15 @@ public class FPSMovement : MonoBehaviour
 	//UI
 	public Image Stamina;
 
-	private void Update()
+	// Animations
+	public Animator playerAnim;
+
+    private void Start()
+    {
+		//playerAnim = GetComponent<Animator>();
+    }
+
+    private void Update()
 	{
 		//Flashlight flickering
 		flickerdelay -= Time.deltaTime;
@@ -56,8 +64,10 @@ public class FPSMovement : MonoBehaviour
 				sprinting = false;
             }
 
-			if (sprinting && (forwardMovement != 0 || sideMovement != 0 ))
+			if (sprinting && (forwardMovement != 0 || sideMovement != 0 )) //sprinting
             {
+				playerAnim.SetBool("IsMoving", true);
+				playerAnim.SetBool("IsSprinting", true);
 				sprint = 3f;
 				Stamina.fillAmount -= Time.deltaTime * 0.4f;
 			}
@@ -71,6 +81,16 @@ public class FPSMovement : MonoBehaviour
 			if (Stamina.fillAmount == 0f)
 			{
 				sprint = 0f;
+			}
+			if(forwardMovement == 0 && sideMovement == 0 && !sprinting) // idle
+            {
+				playerAnim.SetBool("IsMoving", false);
+				playerAnim.SetBool("IsSprinting", false);
+			}
+			if(!sprinting && (forwardMovement != 0 || sideMovement != 0)) // walking
+            {
+				playerAnim.SetBool("IsMoving", true);
+				playerAnim.SetBool("IsSprinting", false);
 			}
 
 
