@@ -31,7 +31,7 @@ public class FPSController : MonoBehaviour
 		//Camera rotation
 		float mouseInputY = Input.GetAxis("Mouse Y") * MouseSensitivity;
 		camRotation -= mouseInputY;
-		camRotation = Mathf.Clamp(camRotation, -90f, 90f);
+		camRotation = Mathf.Clamp(camRotation, -60f, 70f);
 		CamTransform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0f, 0f));
 
 		float mouseInputX = Input.GetAxis("Mouse X") * MouseSensitivity;
