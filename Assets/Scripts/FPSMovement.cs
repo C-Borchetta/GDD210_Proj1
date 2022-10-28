@@ -55,7 +55,7 @@ public class FPSMovement : MonoBehaviour
 			movement += (transform.forward * forwardMovement) + (transform.right * sideMovement);
 
 			//Sprinting
-			if (Input.GetKey(KeyCode.LeftShift)) // are your sprinting?
+			if (Input.GetKey(KeyCode.LeftShift)) // are you sprinting?
             {
 				sprinting = true;
             }
@@ -81,6 +81,8 @@ public class FPSMovement : MonoBehaviour
 			if (Stamina.fillAmount == 0f)
 			{
 				sprint = 0f;
+				playerAnim.SetBool("IsMoving", true);
+				playerAnim.SetBool("IsSprinting", false);
 			}
 			if(forwardMovement == 0 && sideMovement == 0 && !sprinting) // idle
             {
