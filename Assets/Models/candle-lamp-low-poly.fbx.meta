@@ -1,9 +1,44 @@
 fileFormatVersion: 2
-guid: f2282a27317eb9c49a505ebb6aa6c61c
+guid: f2e34d2bd0689cc42bbdfffd124fc6b5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane
+    second: {fileID: 2100000, guid: 66c7c1e086e51bf44a2457f74beb89bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Torus
+    second: {fileID: 2100000, guid: 70b8df0066750f146aa24d2309612548, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tube
+    second: {fileID: 2100000, guid: 34816b265814d334da57e046e4755de9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Plane.4Surface_Color
+    second: {fileID: 2800000, guid: bae896167a124b243825fb958b02e14e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Plane.4Transparency
+    second: {fileID: 2800000, guid: c7aa4fc239291db489873240047f10cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Torus.1Surface_Color
+    second: {fileID: 2800000, guid: f866da618c4ba4240b64c1f79625f22e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tube.2Surface_Color
+    second: {fileID: 2800000, guid: a045911f255d7074e9e7edbe4e92b39f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
