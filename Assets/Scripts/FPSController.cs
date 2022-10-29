@@ -11,11 +11,17 @@ public class FPSController : MonoBehaviour
 
 	//UI
 	public GameObject Key1img;
+	//public GameObject Key2img;
+	//public GameObject Key3img;
 	public bool gotkey1 = false;
+	public bool gotkey2 = false;
+	public bool gotkey3 = false;
 	public GameObject winscreen;
 
 	//Doors
 	public GameObject Maindoors;
+	public GameObject SilverDoor;
+	//public GameObject BronzeDoor;
 	 
 
 	private void Start()
@@ -23,6 +29,8 @@ public class FPSController : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 
 		Key1img.SetActive(false);
+		//Key2img.SetActive(false);
+		//Key3img.SetActive(false);
 		winscreen.SetActive(false);
 	}
 
@@ -55,6 +63,24 @@ public class FPSController : MonoBehaviour
 					Key1img.SetActive(true);
 					gotkey1 = true;
 				}
+
+				//Key 2 pickup
+				key2script k2 = hit.collider.GetComponent<key2script>();
+				if (k2 != null)
+				{
+					Destroy(hit.collider.gameObject);
+					//Key2img.SetActive(true);
+					gotkey2 = true;
+				}
+
+				//Key 3 pickup
+				key3script k3 = hit.collider.GetComponent<key3script>();
+				if (k3 != null)
+				{
+					Destroy(hit.collider.gameObject);
+					//Key3img.SetActive(true);
+					gotkey3 = true;
+				}
 			}
 			else
 			{
@@ -72,6 +98,23 @@ public class FPSController : MonoBehaviour
         {
 			Maindoors.SetActive(false);
         }
+
+		//Silver door opening
+		Silverdoor sd = hit.collider.GetComponent<Silverdoor>();
+
+        if (sd && gotkey2 == true)
+        {
+			SilverDoor.SetActive(false);
+        }
+
+		//Bronze door opening
+		Bronzedoor bd = hit.collider.GetComponent<Bronzedoor>();
+
+		if (bd && gotkey3 == true)
+        {
+			//BronzeDoor.SetActive(false);
+		}
+
 
 		//Winning on outside
 		outside ot = hit.collider.GetComponent<outside>();
