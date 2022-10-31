@@ -14,6 +14,5 @@ public class MonsterMove : MonoBehaviour
         Vector3 moveDir = (Target.position - transform.position).normalized;
         moveDir.y = 0; // Remove Y component
         transform.position += (moveDir * MoveSpeed * Time.deltaTime);
-        
     }
 }
