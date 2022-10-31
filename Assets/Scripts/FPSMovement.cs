@@ -75,7 +75,7 @@ public class FPSMovement : MonoBehaviour
 			else
 			{
 				sprint = 0f;
-				Stamina.fillAmount += Time.deltaTime * 0.06f;
+				Stamina.fillAmount += Time.deltaTime * 0.08f;
 			}
 
 			if (Stamina.fillAmount == 0f)
