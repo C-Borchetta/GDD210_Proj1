@@ -3548,7 +3548,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3739,7 +3739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 654952805}
-  MoveSpeed: 2
+  MoveSpeed: 3
 --- !u!1 &388539609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
@@ -6726,13 +6726,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MouseSensitivity: 2.5
   CamTransform: {fileID: 963194228}
+  speed: 17
+  distance: 0.15
   Key1img: {fileID: 1905983005}
   gotkey1: 0
   gotkey2: 0
   gotkey3: 0
   winscreen: {fileID: 661276816}
+  Stamina: {fileID: 1236634517}
   Maindoors: {fileID: 388808621}
   SilverDoor: {fileID: 187746922}
+  BronzeDoor: {fileID: 931635967}
 --- !u!143 &654952809
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9930,9 +9934,10 @@ GameObject:
   - component: {fileID: 931635968}
   - component: {fileID: 931635971}
   - component: {fileID: 931635970}
+  - component: {fileID: 931635972}
   - component: {fileID: 931635969}
   m_Layer: 0
-  m_Name: Wall (116)
+  m_Name: Bronze Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9986,7 +9991,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f277aabfb8a44004fadbd05db10728d1, type: 2}
+  - {fileID: 2100000, guid: 9017131797349c340b3070fdfaa87fd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10016,6 +10021,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931635967}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &931635972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931635967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed526ee3cc6a7d649a154623c859636c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939325136
 GameObject:
   m_ObjectHideFlags: 0

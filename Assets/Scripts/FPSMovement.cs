@@ -69,7 +69,7 @@ public class FPSMovement : MonoBehaviour
 				playerAnim.SetBool("IsMoving", true);
 				playerAnim.SetBool("IsSprinting", true);
 				sprint = 3f;
-				Stamina.fillAmount -= Time.deltaTime * 0.4f;
+				Stamina.fillAmount -= Time.deltaTime * 0.35f;
 			}
 
 			else

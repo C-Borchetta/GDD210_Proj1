@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class FPSController : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class FPSController : MonoBehaviour
 	public Transform CamTransform;
 
 	private float camRotation = 0f;
+	private float Shaking = 0f;
+	public float speed;
+	public float distance;
+	private float rayAdjust;
 
 	//UI
 	public GameObject Key1img;
@@ -17,12 +23,12 @@ public class FPSController : MonoBehaviour
 	public bool gotkey2 = false;
 	public bool gotkey3 = false;
 	public GameObject winscreen;
+	public Image Stamina;
 
 	//Doors
 	public GameObject Maindoors;
 	public GameObject SilverDoor;
-	//public GameObject BronzeDoor;
-	 
+	public GameObject BronzeDoor;
 
 	private void Start()
 	{
@@ -39,14 +45,24 @@ public class FPSController : MonoBehaviour
 		//Camera rotation
 		float mouseInputY = Input.GetAxis("Mouse Y") * MouseSensitivity;
 		camRotation -= mouseInputY;
-		camRotation = Mathf.Clamp(camRotation, -60f, 70f);
+		camRotation = Mathf.Clamp(camRotation, -60f, 70f) + Shaking;
 		CamTransform.localRotation = Quaternion.Euler(new Vector3(camRotation, 0f, 0f));
 
 		float mouseInputX = Input.GetAxis("Mouse X") * MouseSensitivity;
 		transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseInputX, 0f));
 
+		//Screen shake while sprinting
+		if(Input.GetKey(KeyCode.LeftShift) && Stamina.fillAmount != 0)
+        {
+			Shaking = Mathf.Sin(Time.time * speed) * distance;
+        }
+        else
+        {
+			Shaking = 0;
+        }
+
 		//Raycasting
-		if(Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
 
@@ -57,8 +73,8 @@ public class FPSController : MonoBehaviour
 
 				//Key 1 pickup
 				key1script k1 = hit.collider.GetComponent<key1script>();
-				if(k1 != null)
-                {
+				if (k1 != null)
+				{
 					Destroy(hit.collider.gameObject);
 					Key1img.SetActive(true);
 					gotkey1 = true;
@@ -87,44 +103,44 @@ public class FPSController : MonoBehaviour
 				Debug.DrawRay(CamTransform.position + new Vector3(0f, -1f, 0f), CamTransform.forward * 100f, Color.red, 1f);
 			}
 		}
+
 	}
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
 		//Main Door opening
 		maindoor md = hit.collider.GetComponent<maindoor>();
-		
-		if(md && gotkey1 == true)
-        {
+
+		if (md && gotkey1 == true)
+		{
 			Maindoors.SetActive(false);
-        }
+			Key1img.SetActive(false);
+		}
 
 		//Silver door opening
 		Silverdoor sd = hit.collider.GetComponent<Silverdoor>();
 
-        if (sd && gotkey2 == true)
-        {
+		if (sd && gotkey2 == true)
+		{
 			SilverDoor.SetActive(false);
-        }
+		}
 
 		//Bronze door opening
 		Bronzedoor bd = hit.collider.GetComponent<Bronzedoor>();
 
 		if (bd && gotkey3 == true)
-        {
-			//BronzeDoor.SetActive(false);
+		{
+			BronzeDoor.SetActive(false);
 		}
 
 
 		//Winning on outside
 		outside ot = hit.collider.GetComponent<outside>();
 
-        if (ot)
-        {
+		if (ot)
+		{
 			winscreen.SetActive(true);
 		}
 
 	}
-
-
 }
