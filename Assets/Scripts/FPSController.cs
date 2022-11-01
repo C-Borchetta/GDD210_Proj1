@@ -13,12 +13,11 @@ public class FPSController : MonoBehaviour
 	private float Shaking = 0f;
 	public float speed;
 	public float distance;
-	private float rayAdjust;
 
 	//UI
 	public GameObject Key1img;
-	//public GameObject Key2img;
-	//public GameObject Key3img;
+	public GameObject Key2img;
+	public GameObject Key3img;
 	public bool gotkey1 = false;
 	public bool gotkey2 = false;
 	public bool gotkey3 = false;
@@ -35,8 +34,8 @@ public class FPSController : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 
 		Key1img.SetActive(false);
-		//Key2img.SetActive(false);
-		//Key3img.SetActive(false);
+		Key2img.SetActive(false); 
+		Key3img.SetActive(false);
 		winscreen.SetActive(false);
 	}
 
@@ -85,7 +84,7 @@ public class FPSController : MonoBehaviour
 				if (k2 != null)
 				{
 					Destroy(hit.collider.gameObject);
-					//Key2img.SetActive(true);
+					Key2img.SetActive(true);
 					gotkey2 = true;
 				}
 
@@ -94,7 +93,7 @@ public class FPSController : MonoBehaviour
 				if (k3 != null)
 				{
 					Destroy(hit.collider.gameObject);
-					//Key3img.SetActive(true);
+					Key3img.SetActive(true);
 					gotkey3 = true;
 				}
 			}
@@ -114,7 +113,7 @@ public class FPSController : MonoBehaviour
 		if (md && gotkey1 == true)
 		{
 			Maindoors.SetActive(false);
-			Key1img.SetActive(false);
+			//Key1img.SetActive(false);
 		}
 
 		//Silver door opening
@@ -123,6 +122,7 @@ public class FPSController : MonoBehaviour
 		if (sd && gotkey2 == true)
 		{
 			SilverDoor.SetActive(false);
+			//Key2img.SetActive(false);
 		}
 
 		//Bronze door opening
@@ -131,6 +131,7 @@ public class FPSController : MonoBehaviour
 		if (bd && gotkey3 == true)
 		{
 			BronzeDoor.SetActive(false);
+			//Key3img.SetActive(false);
 		}
 
 
