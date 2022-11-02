@@ -21,7 +21,6 @@ public class FPSController : MonoBehaviour
 	public bool gotkey1 = false;
 	public bool gotkey2 = false;
 	public bool gotkey3 = false;
-	public GameObject winscreen;
 	public Image Stamina;
 
 	//Doors
@@ -36,7 +35,6 @@ public class FPSController : MonoBehaviour
 		Key1img.SetActive(false);
 		Key2img.SetActive(false); 
 		Key3img.SetActive(false);
-		winscreen.SetActive(false);
 	}
 
 	private void Update()
@@ -133,15 +131,5 @@ public class FPSController : MonoBehaviour
 			BronzeDoor.SetActive(false);
 			//Key3img.SetActive(false);
 		}
-
-
-		//Winning on outside
-		outside ot = hit.collider.GetComponent<outside>();
-
-		if (ot)
-		{
-			winscreen.SetActive(true);
-		}
-
 	}
 }

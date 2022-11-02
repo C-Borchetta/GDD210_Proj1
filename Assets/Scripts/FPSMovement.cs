@@ -24,6 +24,8 @@ public class FPSMovement : MonoBehaviour
 
 	//UI
 	public Image Stamina;
+	public GameObject winscreen;
+	public GameObject losescreen;
 
 	// Animations
 	public Animator playerAnim;
@@ -31,7 +33,10 @@ public class FPSMovement : MonoBehaviour
     private void Start()
     {
 		//playerAnim = GetComponent<Animator>();
-    }
+
+		winscreen.SetActive(false);
+		losescreen.SetActive(false);
+	}
 
     private void Update()
 	{
@@ -66,7 +71,7 @@ public class FPSMovement : MonoBehaviour
 
 			if (sprinting && (forwardMovement != 0 || sideMovement != 0 )) //sprinting
             {
-				playerAnim.SetBool("IsMoving", true);
+				playerAnim.SetBool("IsMoving", false);
 				playerAnim.SetBool("IsSprinting", true);
 				sprint = 3f;
 				Stamina.fillAmount -= Time.deltaTime * 0.35f;
@@ -75,7 +80,7 @@ public class FPSMovement : MonoBehaviour
 			else
 			{
 				sprint = 0f;
-				Stamina.fillAmount += Time.deltaTime * 0.06f;
+				Stamina.fillAmount += Time.deltaTime * 0.05f;
 			}
 
 			if (Stamina.fillAmount == 0f)
@@ -116,11 +121,21 @@ public class FPSMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-		//Stop movement after winning
+		//Winning
 		outside ot = hit.collider.GetComponent<outside>();
 		if (ot)
 		{
 			canMove = false;
+			winscreen.SetActive(true);
 		}
+
+		//Losing
+		MonsterMove mm = hit.collider.GetComponent<MonsterMove>();
+        if (mm)
+        {
+			canMove = false;
+			losescreen.SetActive(true);
+        }
+
 	}
 }
