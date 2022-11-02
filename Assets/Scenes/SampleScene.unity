@@ -9259,6 +9259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 654952805}
   MoveSpeed: 3
+  moveDir: {x: 0, y: 0, z: 0}
+  enemyState: 1
+  player: {fileID: 654952807}
 --- !u!1 &387946920
 GameObject:
   m_ObjectHideFlags: 0
