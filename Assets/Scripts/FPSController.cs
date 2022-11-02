@@ -65,7 +65,7 @@ public class FPSController : MonoBehaviour
 
 			if (Physics.Raycast(CamTransform.position, CamTransform.forward, out hit))
 			{
-				Debug.DrawLine(CamTransform.position + new Vector3(0f, -1f, 0f), hit.point, Color.green, 1f);
+				Debug.DrawLine(CamTransform.position, hit.point, Color.green, 1f);
 				Debug.Log(hit.collider.gameObject.name);
 
 				//Key 1 pickup
@@ -97,7 +97,7 @@ public class FPSController : MonoBehaviour
 			}
 			else
 			{
-				Debug.DrawRay(CamTransform.position + new Vector3(0f, -1f, 0f), CamTransform.forward * 100f, Color.red, 1f);
+				Debug.DrawRay(CamTransform.position, CamTransform.forward * 100f, Color.red, 1f);
 			}
 		}
 

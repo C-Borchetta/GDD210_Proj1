@@ -16527,13 +16527,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 200
+  m_Height: 150
   m_Radius: 31
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 100, z: 17}
+  m_Center: {x: 0, y: 73, z: 17}
 --- !u!1 &661276816
 GameObject:
   m_ObjectHideFlags: 0
