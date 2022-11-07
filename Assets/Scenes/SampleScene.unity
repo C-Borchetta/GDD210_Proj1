@@ -12052,7 +12052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463262468}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.38258457, y: -0.0272727, z: 0.50000036}
+  m_LocalPosition: {x: -0.38258457, y: -0.099, z: 0.50000036}
   m_LocalScale: {x: 0.08000002, y: 0.099999994, z: 0.07272729}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18626,10 +18626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CC: {fileID: 654952809}
   MoveSpeed: 4
-  Gravity: -9.8
-  JumpSpeed: 6
   sprinting: 0
-  verticalSpeed: 0
   light: {fileID: 1633032671}
   flickerdelay: 0.5
   intensityRange: {x: 5, y: 7}
@@ -52447,7 +52444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405554566}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.4204614, y: -0.018181713, z: 0.44999635}
+  m_LocalPosition: {x: -0.383, y: -0.115, z: 0.45}
   m_LocalScale: {x: 0.08888885, y: 0.09999996, z: 0.07272727}
   m_ConstrainProportionsScale: 0
   m_Children: []
