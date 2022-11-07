@@ -115,11 +115,16 @@ public class FPSMovement : MonoBehaviour
 
 		//Losing
 		MonsterMove mm = hit.collider.GetComponent<MonsterMove>();
-
-		if (mm)
+		
+		if (mm && (!Input.anyKey || Input.anyKey))
 		{
 			canMove = false;
 			losescreen.SetActive(true);
 		}
 	}
+
+	public void KillPlayer()
+    {
+
+    }
 }

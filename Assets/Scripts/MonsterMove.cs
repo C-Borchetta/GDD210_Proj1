@@ -30,6 +30,10 @@ public class MonsterMove : MonoBehaviour
 		if(Physics.Raycast(ray, out hit))
         {
 			agent.SetDestination(hit.point);
+			if(hit.distance <= 1)
+            {
+				//KillPlayer();
+            }
         }
 
 	}
