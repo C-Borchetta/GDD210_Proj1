@@ -30,9 +30,13 @@ public class MonsterMove : MonoBehaviour
 		if(Physics.Raycast(ray, out hit))
         {
 			agent.SetDestination(hit.point);
-			if(hit.distance <= 1)
+			FPSMovement p = hit.transform.GetComponent<FPSMovement>();
+			Debug.Log(hit.distance);
+
+			if (hit.distance <= 2.8)
             {
-				//KillPlayer();
+				p.KillPlayer(true);
+				
             }
         }
 

@@ -123,8 +123,23 @@ public class FPSMovement : MonoBehaviour
 		}
 	}
 
-	public void KillPlayer()
-    {
+	void OnCollisionEnter(Collision collision)
+	{
+		//Check for a match with the specified name on any GameObject that collides with your GameObject
+		if (collision.gameObject.tag == "Monster")
+		{
+			canMove = false;
+			losescreen.SetActive(true);
+		}
+	}
 
-    }
+		public void KillPlayer(bool killed)
+    {
+		if(killed)
+        {
+			canMove = false;
+			losescreen.SetActive(true);
+		}
+
+	}
 }
