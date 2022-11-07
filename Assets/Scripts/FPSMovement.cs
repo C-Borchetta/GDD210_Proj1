@@ -6,21 +6,19 @@ using TMPro;
 
 public class FPSMovement : MonoBehaviour
 {
+	//Movement
 	public CharacterController CC;
 	public float MoveSpeed;
 	private float sprint = 0f;
-	public float Gravity = -9.8f;
-	public float JumpSpeed;
 	public bool sprinting;
+	private bool canMove = true;
 
-	public float verticalSpeed;
-
+	//Flashlight
 	public new Light light;
 	public float flickerdelay;
 	public Vector2 intensityRange;
 	public Vector2 delayRange;
 	public float targetIntens;
-	private bool canMove = true;
 
 	//UI
 	public Image Stamina;
@@ -100,20 +98,6 @@ public class FPSMovement : MonoBehaviour
 				playerAnim.SetBool("IsSprinting", false);
 			}
 
-
-			//Jump
-			if (CC.isGrounded)
-			{
-				verticalSpeed = 0f;
-				if (Input.GetKeyDown(KeyCode.Space))
-				{
-					verticalSpeed = JumpSpeed;
-				}
-			}
-
-			verticalSpeed += (Gravity * Time.deltaTime);
-			movement += (transform.up * verticalSpeed * Time.deltaTime);
-
 			CC.Move(movement);
 		}
 	
@@ -131,11 +115,11 @@ public class FPSMovement : MonoBehaviour
 
 		//Losing
 		MonsterMove mm = hit.collider.GetComponent<MonsterMove>();
-        if (mm)
-        {
+
+		if (mm)
+		{
 			canMove = false;
 			losescreen.SetActive(true);
-        }
-
+		}
 	}
 }

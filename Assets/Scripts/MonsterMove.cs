@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterMove : MonoBehaviour
 {
 
-	// Update is called once per frame
 	public Transform Target;
-	public float MoveSpeed;
+	//public float MoveSpeed;
+
+	public Camera Cam;
+	public NavMeshAgent agent;
 
 	private void Start()
 	{
@@ -16,11 +19,21 @@ public class MonsterMove : MonoBehaviour
 
 	private void Update()
 	{
-		Vector3 moveDir = (Target.position - transform.position).normalized;
-		moveDir.y = 0; // Remove Y component
-		transform.position += (moveDir * MoveSpeed * Time.deltaTime);
+		//Vector3 moveDir = (Target.position - transform.position).normalized;
+		//moveDir.y = 0; // Remove Y component
+		//transform.position += (moveDir * MoveSpeed * Time.deltaTime);
 
+		Ray ray = Cam.ScreenPointToRay(Target.position);
+		RaycastHit hit;
+
+		//Draws ray out towards Player, sets destination at that point
+		if(Physics.Raycast(ray, out hit))
+        {
+			agent.SetDestination(hit.point);
+        }
 
 	}
+
+
 
 }
