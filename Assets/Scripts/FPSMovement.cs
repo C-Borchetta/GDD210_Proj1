@@ -47,6 +47,7 @@ public class FPSMovement : MonoBehaviour
 		}
 		light.intensity = Mathf.Lerp(light.intensity, targetIntens, Time.deltaTime * 6);
 
+		//All movement within bool
 		if (canMove == true)
 		{
 			Vector3 movement = Vector3.zero;
@@ -100,6 +101,8 @@ public class FPSMovement : MonoBehaviour
 
 			CC.Move(movement);
 		}
+
+		//Raycast from player
 	
 	}
 
@@ -116,30 +119,10 @@ public class FPSMovement : MonoBehaviour
 		//Losing
 		MonsterMove mm = hit.collider.GetComponent<MonsterMove>();
 		
-		if (mm && (!Input.anyKey || Input.anyKey))
+		if (mm)
 		{
 			canMove = false;
 			losescreen.SetActive(true);
 		}
-	}
-
-	void OnCollisionEnter(Collision collision)
-	{
-		//Check for a match with the specified name on any GameObject that collides with your GameObject
-		if (collision.gameObject.tag == "Monster")
-		{
-			canMove = false;
-			losescreen.SetActive(true);
-		}
-	}
-
-		public void KillPlayer(bool killed)
-    {
-		if(killed)
-        {
-			canMove = false;
-			losescreen.SetActive(true);
-		}
-
 	}
 }
