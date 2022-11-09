@@ -28,6 +28,9 @@ public class FPSMovement : MonoBehaviour
 	// Animations
 	public Animator playerAnim;
 
+	public Transform Monster;
+	public Transform CamTransform;
+
     private void Start()
     {
 		//playerAnim = GetComponent<Animator>();
@@ -103,6 +106,12 @@ public class FPSMovement : MonoBehaviour
 		}
 
 		//Raycast from player
+		RaycastHit hit;
+
+		if (Physics.Raycast(CamTransform.position, Monster.position, out hit))
+        {
+			Debug.DrawLine(CamTransform.position, hit.point, Color.blue, 1f);
+        }
 	
 	}
 

@@ -19752,16 +19752,24 @@ PrefabInstance:
       value: -18.17
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4110740679865063629, guid: 55b08c64781c3374ab7e8d76fe226757, type: 3}
       propertyPath: m_Layer
@@ -20027,6 +20035,8 @@ MonoBehaviour:
   winscreen: {fileID: 661276816}
   losescreen: {fileID: 1005304679}
   playerAnim: {fileID: 654952806}
+  Monster: {fileID: 381549437}
+  CamTransform: {fileID: 963194228}
 --- !u!114 &654952808
 MonoBehaviour:
   m_ObjectHideFlags: 0
