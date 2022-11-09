@@ -28,6 +28,11 @@ public class FPSController : MonoBehaviour
 	public GameObject SilverDoor;
 	public GameObject BronzeDoor;
 
+	// Door Particles
+	public ParticleSystem goldPart;
+	public ParticleSystem silverPart;
+	public ParticleSystem bronzePart;
+
 	private void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
@@ -35,6 +40,9 @@ public class FPSController : MonoBehaviour
 		Key1img.SetActive(false);
 		Key2img.SetActive(false); 
 		Key3img.SetActive(false);
+		bronzePart.Stop();
+		silverPart.Stop();
+		goldPart.Stop();
 	}
 
 	private void Update()
@@ -74,7 +82,8 @@ public class FPSController : MonoBehaviour
 				{
 					Destroy(hit.collider.gameObject);
 					Key1img.SetActive(true);
-					gotkey1 = true; 
+					gotkey1 = true;
+					bronzePart.Play();
 				}
 
 				//Key 2 pickup
@@ -84,6 +93,7 @@ public class FPSController : MonoBehaviour
 					Destroy(hit.collider.gameObject);
 					Key2img.SetActive(true);
 					gotkey2 = true;
+					silverPart.Play();
 				}
 
 				//Key 3 pickup
@@ -93,6 +103,7 @@ public class FPSController : MonoBehaviour
 					Destroy(hit.collider.gameObject);
 					Key3img.SetActive(true);
 					gotkey3 = true;
+					goldPart.Play();
 				}
 			}
 			else
@@ -112,6 +123,8 @@ public class FPSController : MonoBehaviour
 		{
 			Maindoors.SetActive(false);
 			//Key1img.SetActive(false);
+			goldPart.Stop();
+
 		}
 
 		//Silver door opening
@@ -121,6 +134,7 @@ public class FPSController : MonoBehaviour
 		{
 			SilverDoor.SetActive(false);
 			//Key2img.SetActive(false);
+			silverPart.Stop();
 		}
 
 		//Bronze door opening
@@ -130,6 +144,7 @@ public class FPSController : MonoBehaviour
 		{
 			BronzeDoor.SetActive(false);
 			//Key3img.SetActive(false);
+			bronzePart.Stop();
 		}
 	}
 }
