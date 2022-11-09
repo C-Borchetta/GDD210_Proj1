@@ -83,7 +83,7 @@ public class FPSController : MonoBehaviour
 					Destroy(hit.collider.gameObject);
 					Key1img.SetActive(true);
 					gotkey1 = true;
-					bronzePart.Play();
+					goldPart.Play();
 				}
 
 				//Key 2 pickup
@@ -103,7 +103,7 @@ public class FPSController : MonoBehaviour
 					Destroy(hit.collider.gameObject);
 					Key3img.SetActive(true);
 					gotkey3 = true;
-					goldPart.Play();
+					bronzePart.Play();
 				}
 			}
 			else

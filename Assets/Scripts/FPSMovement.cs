@@ -105,14 +105,6 @@ public class FPSMovement : MonoBehaviour
 			CC.Move(movement);
 		}
 
-		//Raycast from player
-		RaycastHit hit;
-
-		if (Physics.Raycast(CamTransform.position, Monster.position, out hit))
-        {
-			Debug.DrawLine(CamTransform.position, hit.point, Color.blue, 1f);
-        }
-	
 	}
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
